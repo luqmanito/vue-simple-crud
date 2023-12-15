@@ -21,6 +21,32 @@ export const LoginNetwork = (
       });
   });
 };
+export const RegisterNetwork = (
+  email: string,
+  password: string,
+  password_confirmation: string,
+  name: string,
+  business_name: string
+): Promise<LoginModel | undefined> => {
+  return new Promise((resolve, reject) => {
+    HttpCommon.post<LoginModel>(`/auth/register`, {
+      email: email,
+      password: password,
+      password_confirmation: password_confirmation,
+      name: name,
+      business_name: business_name,
+    })
+      .then(({ data }) => {
+        resolve(data);
+      })
+      .catch((e) => {
+        console.log(e);
+        
+        const err: undefined = e.response?.data;
+        reject(err);
+      });
+  });
+};
 
 export const DetailLoginUser = (): Promise<UserModel> => {
   return new Promise((resolve, reject) => {

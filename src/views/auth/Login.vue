@@ -22,6 +22,7 @@
                 ></v-text-field>
                 <v-btn type="submit" color="primary">Login</v-btn>
               </v-form>
+              <v-btn class="mt-4" @click="toRegister" color="primary">Register</v-btn>
             </v-card-text>
           </v-card>
         </v-col>
@@ -54,6 +55,9 @@ function login() {
       }
     });
 }
+const toRegister = () => {
+  window.location.href = "/register";
+};
 </script>
 
 <style scoped></style>
